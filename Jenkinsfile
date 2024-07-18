@@ -1,11 +1,21 @@
-node {  
-    stage('Build') { 
-        // 
+pipeline {
+    agent any
+    stages {
+            stage ("Cleaning stage"){
+            steps {
+                bat "mvn clean"
+            }
     }
-    stage('Test') { 
-        // 
+    stage ("Testing stage"){
+            steps {
+                bat "mvn test"
+            }
     }
-    stage('Deploy') { 
-        // 
+    stage ("Packaging stage"){
+            steps {
+                bat "mvn package"
+            }
     }
+}
+
 }
